@@ -32,7 +32,7 @@ export default class AddNote extends React.Component {
             'content': noteContent.value,
         }
         this.setState({error: null})
-        const url = 'https://localhost:9090/notes';
+        const url = 'http://localhost:9090/notes';
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(note),
