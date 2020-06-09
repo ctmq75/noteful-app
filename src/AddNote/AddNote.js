@@ -11,10 +11,12 @@ export default class AddNote extends React.Component {
                 value: '',
                 touched: false
             },
+
             content: {
                 value: '',
                 touched: false
             },
+
             error: null
         }
     }
@@ -29,9 +31,10 @@ export default class AddNote extends React.Component {
         const note = {
             'name': noteName.value,
             'modified': isoDate,
-            'folder_id': noteFolder.value,
+            'folderId': noteFolder.value,
             'content': noteContent.value,
         }
+        console.log(note)
         this.setState({error: null})
         const url = 'http://localhost:9090/notes';
         fetch(url, {
@@ -79,6 +82,7 @@ export default class AddNote extends React.Component {
     handleClickCancel = () => {
         this.props.history.push('/');
     };
+
 
     render() {
         const folderOptions = this.context.folders.map(folder => {
