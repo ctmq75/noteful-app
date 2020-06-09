@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
 
 export default class AddNote extends React.Component {
@@ -20,9 +21,9 @@ export default class AddNote extends React.Component {
 
     static contextType = ApiContext;
 
-    handleSubmit = e => {
-        e.preventDefault();
-        const { noteName, noteFolder, noteContent } = e.target;
+    handleSubmit = event => {
+        event.preventDefault();
+        const { noteName, noteFolder, noteContent } = event.target;
         const date = new Date();
         const isoDate = date.toISOString();
         const note = {
@@ -156,4 +157,7 @@ export default class AddNote extends React.Component {
             </>
         )
     }
+}
+AddNote.propType = {
+    push: PropTypes.func.isRequired
 }

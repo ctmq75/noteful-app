@@ -1,6 +1,8 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
+
 
 export default class AddFolder extends React.Component {
     constructor(props) {
@@ -16,9 +18,9 @@ export default class AddFolder extends React.Component {
     }
     static contextType = ApiContext;
 
-    handleSubmit = e => {
-        e.preventDefault();
-        const folderName = e.target.folderName;
+    handleSubmit = event => {
+        event.preventDefault();
+        const folderName = event.target.folderName;
         const folder = {'name': folderName.value}
         this.setState({ error: null })
         const url = 'http://localhost:9090/folders';
@@ -102,3 +104,6 @@ export default class AddFolder extends React.Component {
         )
     }
 }
+AddFolder.propType = {
+    push: PropTypes.func.isRequired
+};
